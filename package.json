@@ -1,0 +1,9 @@
+{
+  "name": "syncify-project",
+  "version": "1.0.0",
+  "description": "Syncify - Social Media Management Platform",
+  "scripts": {
+    "dev": "cd frontend && npm run dev",
+    "install": "cd frontend && npm install"
+  }
+}
