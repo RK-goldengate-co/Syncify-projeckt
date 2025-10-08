@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Syncify - Kiểm tra ứng dụng</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <div class="container mx-auto px-4 py-8">
+        <div class="max-w-4xl mx-auto">
+            <header class="text-center mb-8">
+                <h1 class="text-4xl font-bold text-gray-800 mb-2">🎯 Syncify - Test Interface</h1>
+                <p class="text-gray-600">Kiểm tra các chức năng của ứng dụng quản lý mạng xã hội</p>
+            </header>
+
+            <div class="grid md:grid-cols-2 gap-6">
+                <!-- Development Server Status -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        🚀 Development Server
+                    </h2>
+                    <div class="space-y-3">
+                        <p class="text-gray-600">Ứng dụng đang chạy trên:</p>
+                        <div class="bg-gray-800 text-green-400 p-3 rounded font-mono text-sm">
+                            http://localhost:5173
+                        </div>
+                        <div class="flex gap-2">
+                            <button onclick="window.open('http://localhost:5173', '_blank')"
+                                    class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded flex-1">
+                                Mở ứng dụng
+                            </button>
+                            <button onclick="checkServer()"
+                                    class="bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded">
+                                Kiểm tra trạng thái
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Application Features -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        ✨ Các chức năng đã triển khai
+                    </h2>
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✅</span>
+                            <span>Đăng nhập/Đăng xuất</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✅</span>
+                            <span>Quản lý tài khoản mạng xã hội</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✅</span>
+                            <span>Lên lịch đăng bài</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✅</span>
+                            <span>Xuất/Nhập dữ liệu JSON</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-green-500">✅</span>
+                            <span>Đa ngôn ngữ (Tiếng Việt/English)</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-yellow-500">🚧</span>
+                            <span>Dashboard với dữ liệu thực tế</span>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-yellow-500">🚧</span>
+                            <span>Phân tích dữ liệu</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Test Actions -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        🧪 Test Actions
+                    </h2>
+                    <div class="space-y-3">
+                        <button onclick="testLogin()"
+                                class="w-full bg-purple-500 hover:bg-purple-600 text-white py-2 px-4 rounded">
+                            Test Đăng nhập
+                        </button>
+                        <button onclick="testSocialManager()"
+                                class="w-full bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded">
+                            Test Quản lý mạng xã hội
+                        </button>
+                        <button onclick="testExportImport()"
+                                class="w-full bg-teal-500 hover:bg-teal-600 text-white py-2 px-4 rounded">
+                            Test Xuất/Nhập dữ liệu
+                        </button>
+                        <button onclick="testLanguageSwitch()"
+                                class="w-full bg-pink-500 hover:bg-pink-600 text-white py-2 px-4 rounded">
+                            Test Đổi ngôn ngữ
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Project Info -->
+                <div class="bg-white rounded-lg shadow-md p-6">
+                    <h2 class="text-xl font-semibold mb-4 flex items-center">
+                        📋 Thông tin dự án
+                    </h2>
+                    <div class="space-y-2 text-sm">
+                        <div><strong>Framework:</strong> React + Vite</div>
+                        <div><strong>Styling:</strong> Tailwind CSS</div>
+                        <div><strong>Routing:</strong> React Router DOM</div>
+                        <div><strong>Trạng thái:</strong> <span class="text-green-600">Đang chạy</span></div>
+                        <div><strong>Ngôn ngữ:</strong> JavaScript ES6+</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Console Output -->
+            <div class="mt-8 bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold mb-4 flex items-center">
+                    📊 Console Output
+                </h2>
+                <div id="consoleOutput" class="bg-gray-900 text-green-400 p-4 rounded font-mono text-sm h-48 overflow-y-auto">
+                    <div>🚀 Ứng dụng đã sẵn sàng để kiểm tra!</div>
+                    <div>💡 Hãy nhấp vào các nút bên trên để test các chức năng</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function log(message) {
+            const consoleOutput = document.getElementById('consoleOutput');
+            const timestamp = new Date().toLocaleTimeString();
+            consoleOutput.innerHTML += `<div>[${timestamp}] ${message}</div>`;
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        function checkServer() {
+            log('🔍 Đang kiểm tra trạng thái server...');
+            fetch('http://localhost:5173')
+                .then(response => {
+                    if (response.ok) {
+                        log('✅ Server đang hoạt động bình thường');
+                    } else {
+                        log('❌ Lỗi kết nối tới server');
+                    }
+                })
+                .catch(error => {
+                    log('❌ Không thể kết nối tới server. Hãy chạy: npm run dev');
+                });
+        }
+
+        function testLogin() {
+            log('🔐 Đang test chức năng đăng nhập...');
+            log('💡 Hãy thử đăng nhập với email và mật khẩu bất kỳ');
+            window.open('http://localhost:5173', '_blank');
+        }
+
+        function testSocialManager() {
+            log('🌐 Đang test trang quản lý mạng xã hội...');
+            log('💡 Hãy thử thêm, sửa, xóa tài khoản mạng xã hội');
+            window.open('http://localhost:5173/socials', '_blank');
+        }
+
+        function testExportImport() {
+            log('📁 Đang test chức năng xuất/nhập dữ liệu...');
+            log('💡 Hãy thử xuất dữ liệu và nhập lại để kiểm tra');
+            window.open('http://localhost:5173/socials', '_blank');
+        }
+
+        function testLanguageSwitch() {
+            log('🌍 Đang test chức năng đổi ngôn ngữ...');
+            log('💡 Hãy thử chuyển đổi giữa Tiếng Việt và English');
+            window.open('http://localhost:5173/socials', '_blank');
+        }
+
+        // Auto check server status
+        window.onload = function() {
+            setTimeout(checkServer, 1000);
+        };
+    </script>
+</body>
+</html>

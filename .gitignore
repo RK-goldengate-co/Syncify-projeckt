@@ -1,0 +1,39 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Node
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Vite/Build
+*.local
+
+# Env/Secrets
+.env
+*.env
+frontend/.env
+backend/.env
+
+# Python
+backend/__pycache__/
+backend/*.pyc
+backend/.venv/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Misc
+coverage/
